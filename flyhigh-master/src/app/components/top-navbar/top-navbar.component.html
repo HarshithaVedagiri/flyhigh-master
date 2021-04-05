@@ -1,0 +1,22 @@
+<header>
+    <div class="container">
+      <a routerLink="/"><img src="../../../assets/FlyHIGH.PNG"></a>
+      <nav>
+        <ul>
+          <li><a href="#" routerLink="/flight-search">Book</a></li>
+          <!--<li><a href="#" routerLink="/baggage">Baggage Guide</a></li>
+          <li><a href="#" routerLink="/check-in">Check in</a></li>
+          <li><a href="#" routerLink="/flight-status">Flight Status</a></li>
+          <li><a href="#" routerLink="/feedback">Feedback</a></li>-->
+          <li><a *ngIf="loginService.isUserLoggedIn()" href="#" routerLink="/your-booking">Your Booking</a></li>
+          <li><a *ngIf="!loginService.isUserLoggedIn()" href="#" routerLink="/login">Login</a></li>
+          <li><a *ngIf="loginService.isUserLoggedIn()"  href="#" routerLink="/logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  
+<router-outlet></router-outlet>
+<footer></footer>
+  

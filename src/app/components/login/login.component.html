@@ -1,0 +1,12 @@
+<div class="loginBackground">
+  <div class="loginArea">
+          <p class="alert alert-danger" [hidden]="!invalidLogin">The provided user name or password is invalid</p>
+          <p>EMAIL</p>
+          <input class="form-control" [(ngModel)]="username"(keyup)="onKeyUp($event)">
+          <p>PASSWORD</p>
+          <input class="form-control" type="password" [(ngModel)]="password"(keyup)="onKeyUp($event)">
+          <button class="btn btn-primary"(click)="checkLogin()">Sign in</button>   
+          <a routerLink="/register">Register</a>  
+  </div>
+</div>
+

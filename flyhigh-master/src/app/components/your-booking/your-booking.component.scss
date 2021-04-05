@@ -1,0 +1,19 @@
+.your-booking-container{
+    margin:0 auto;
+    padding:15px;
+    &-title{
+        padding:15px;
+    }
+    &-btn-group{
+        padding:15px;
+    }
+    &-btn{
+        margin-left:15px!important;
+    }
+    &-input-group{
+        padding:15px;
+    }
+    &-dropdown{
+        padding:15px;
+    }
+}

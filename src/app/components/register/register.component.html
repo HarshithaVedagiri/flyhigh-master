@@ -1,0 +1,18 @@
+<div class="loginBackground">
+    <div class="loginArea">       
+            <p class="alert alert-success" [hidden]="!isRegistrationSuccessful">Your registration is successful!</p>    
+            <p>FIRST NAME</p>
+            <input class="form-control" [(ngModel)]="firstName"(keyup)="onKeyUp($event)">
+            <p>LAST NAME</p>
+            <input class="form-control" [(ngModel)]="lastName"(keyup)="onKeyUp($event)">
+            <p>EMAIL</p>
+            <input class="form-control" [(ngModel)]="email"(keyup)="onKeyUp($event)">
+            <p>PASSWORD</p>
+            <input class="form-control" type="password" [(ngModel)]="password"(keyup)="onKeyUp($event)">
+            <p>PASSWORD CONFIRM</p>
+            <input class="form-control" type="password" [(ngModel)]="passwordConfirm"(keyup)="onKeyUp($event)">
+            <button class="btn btn-primary" (click)="register()">Register</button>   
+    </div>
+  </div>
+  
+  

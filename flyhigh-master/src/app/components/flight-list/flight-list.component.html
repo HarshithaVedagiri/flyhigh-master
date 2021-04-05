@@ -1,0 +1,108 @@
+<div class="container container-fluid">
+    <div class="row">
+        <div class="flight-list-container">
+            <h2>Best departing flights</h2>
+            <table class="table table-striped table-responsive">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Airline</th>
+                  <th scope="col">Origin</th>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Departure Date</th>
+                  <th scope="col">Departure Time</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col"*ngIf="loginService.isUserLoggedIn()"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let flight of outboundFlightList; index as i">
+                  <td>{{i + 1}}</td>
+                  <td>{{ flight.operatingAirlines }}</td>
+                  <td>{{ flight.departureCity}}</td>
+                  <td>{{ flight.arrivalCity}}</td>
+                  <td>{{ flight.dateOfDeparture}}</td>
+                  <td>{{ flight.estimatedDepartureTime}}</td>
+                  <td>{{ flight.duration}}</td>
+                  <td *ngIf="loginService.isUserLoggedIn()"><button class="btn btn-primary"(click)="open(content,flight)">Book</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Best returning flights</h2>
+            <table class="table table-striped table-responsive">
+              <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Airline</th>
+                <th scope="col">Origin</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Departure Date</th>
+                <th scope="col">Departure Time</th>
+                <th scope="col">Duration</th>
+                <th scope="col"*ngIf="loginService.isUserLoggedIn()"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let flight of returnFlightList; index as i">
+                <td>{{i + 1}}</td>
+                <td>{{ flight.operatingAirlines }}</td>
+                <td>{{ flight.departureCity}}</td>
+                <td>{{ flight.arrivalCity}}</td>
+                <td>{{ flight.dateOfDeparture}}</td>
+                <td>{{ flight.estimatedDepartureTime}}</td>
+                <td>{{ flight.duration}}</td>
+                <td *ngIf="loginService.isUserLoggedIn()"><button class="btn btn-primary" (click)="open(content,flight)">Book</button></td>
+              </tr>
+              </tbody>
+          </table>
+        </div>          
+    </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">   
+    <h4 class="modal-title" id="modal-basic-title">Payment Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="alert alert-success" [hidden]="!isBookingSuccessful">Your booking is successful!</p>
+    <form #bookFlightForm = "ngForm" (ngSubmit) = "onSubmit(bookFlightForm)">
+      <div class="form-row">
+        <div class="col">
+          <div class="flight-list-container-input-group input-group">
+            <input class="form-control"type = "text" name = "nameOnTheCard" placeholder = "Name On The Card" ngModel>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <div class="flight-list-container-input-group input-group">
+            <input class="form-control"type = "text" name = "cardNumber" placeholder = "Card Number" ngModel>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <div class="flight-list-container-input-group input-group">
+            <input class="form-control"type = "text" name = "expirationDate" placeholder = "Expiration Date" ngModel>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <div class="flight-list-container-input-group input-group">
+            <input class="form-control"type = "text" name = "securityCode" placeholder = "Security Code" ngModel>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+            <div class="flight-list-container-input-group input-group">
+                <button class="btn btn-primary">Confirm Booking</button>
+            </div>         
+        </div>     
+    </div> 
+    </form>
+  </div>
+</ng-template>

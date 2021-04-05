@@ -1,0 +1,95 @@
+<div class="container container-fluid">
+    <div class="row">
+        <div class="flight-search-container">
+            <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="flight-search-container-title pull-right">
+                            <h6>* Fields are mandatory</h6>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="flight-search-container-title pull-left">
+                            <h2>Book a flight</h2>
+                        </div>
+                        <div class="flight-search-container-btn-group btn-group btn-group-toggle pull-right" ngbRadioGroup name="radioBasic" [(ngModel)]="type">
+                            <label ngbButtonLabel class="flight-search-container-btn btn-primary">
+                              <input ngbButton type="radio" value="return"> Return
+                            </label>
+                            <label ngbButtonLabel class="flight-search-container-btn btn-primary">
+                              <input ngbButton type="radio" value="oneway"> One way
+                            </label>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="flight-search-container-input-group input-group">
+                            <input class="form-control"type = "text" name = "departureCity" placeholder = "Flying from *" ngModel>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="flight-search-container-input-group input-group">
+                            <input class="form-control"type = "text" name = "arrivalCity" placeholder = "Flying to *" ngModel>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="flight-search-container-input-group input-group">
+                            <input class="form-control" placeholder="Outbound *"
+                                   name="outbound" [(ngModel)]="outbound" ngbDatepicker #o="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="fa fa-calendar" (click)="o.toggle()" type="button"></button>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col" [hidden]="type == 'oneway'">
+                        <div class="flight-search-container-input-group input-group">
+                            <input class="form-control" placeholder="Return *"
+                                   name="return" [(ngModel)]="return" ngbDatepicker #r="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="fa fa-calendar" (click)="r.toggle()" type="button"></button>
+                            </div>
+                          </div>
+                    </div>
+                </div>  
+                <!--<div class="form-row">
+                    <div class="col">
+                        <div class="flight-search-container-input-group">
+                            <input class="form-control"placeholder="Cabin"list="cabins" name="cabin" />
+                            <datalist id="cabins">
+                                <option value="Economy">
+                                <option value="Business">
+                                <option value="First">
+                            </datalist>
+                        </div>                        
+                    </div>
+                    <div class="col">
+                        <div class="flight-search-container-input-group input-group">
+                            <input class="form-control"type = "number" name = "adult" placeholder = "Adults" ngModel>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="flight-search-container-input-group input-group">
+                            <input class="form-control"type = "number" name = "children" placeholder = "Children" ngModel>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="flight-search-container-input-group input-group">
+                            <input class="form-control"type = "number" name = "infant" placeholder = "Infants" ngModel>
+                        </div>
+                    </div>        
+                </div>-->              
+                <div class="form-row">
+                    <div class="col">
+                        <div class="flight-search-container-input-group input-group">
+                            <button class="btn btn-primary">Search flights</button>
+                        </div>         
+                    </div>     
+                </div>                         
+            </form>
+        </div>           
+    </div>
+</div>
+<flight-list *ngIf="outboundFlightList"[outboundFlightList]="outboundFlightList"[returnFlightList]="returnFlightList"></flight-list>
